@@ -1,0 +1,42 @@
+.DocPg {
+  display: flex;
+}
+.sidebar,
+.pdf {
+  width: 50%;
+  flex: 1;
+}
+.pdf {
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.lebles,
+.boxes {
+  height: 50vh;
+}
+.pagination {
+  position: absolute;
+  bottom: 10px;
+  right: 40px;
+  background-color: #fff;
+  cursor: pointer;
+}
+.lebles_div {
+  display: flex;
+  flex-wrap: wrap;
+}
+.lebles_div > div {
+  margin: 20px;
+  padding: 10px 20px;
+}
+.lebles_div .title,
+.lebles_div .author {
+  background-color: coral;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+}
+.lebles_div .author {
+  background-color: darkcyan;
+}
