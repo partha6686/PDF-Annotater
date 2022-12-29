@@ -86,7 +86,11 @@ const DocPg = () => {
   };
   useEffect(() => {
     // fetchPdf();
-    setAnno(JSON.parse(localStorage.getItem("data")));
+    setAnno(
+      JSON.parse(localStorage.getItem("data"))
+        ? JSON.parse(localStorage.getItem("data"))
+        : []
+    );
   }, []);
   console.log(showMenu);
   return (
@@ -169,6 +173,7 @@ const DocPg = () => {
       </div>
       <div className="pdf">
         {annoType &&
+          anno &&
           anno
             .filter((it) => it.pdfId == `${searchParams.get("q")}`)
             .map((item, idx) => (
