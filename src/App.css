@@ -54,3 +54,50 @@
   margin: 5px;
   padding: 5px 10px;
 }
+.m_ico,
+.menu {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .DocPg {
+    flex-direction: column-reverse;
+  }
+  .sidebar,
+  .pdf {
+    width: 100%;
+  }
+  .m_ico {
+    display: inline-block;
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    color: #000;
+    z-index: 102;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .menu {
+    display: block;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 101;
+    background-color: #fff;
+  }
+  .boxes {
+    overflow: scroll;
+  }
+}
+
+@media screen and (max-width: 416px) {
+  .boxes_div {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .boxes_div .title,
+  .boxes_div .author {
+    margin-left: 0;
+    padding: 2px 5px;
+  }
+}

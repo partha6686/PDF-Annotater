@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack5";
 import { useSearchParams } from "react-router-dom";
+import { CgMenuGridR } from "react-icons/cg";
+import { RxCross2 } from "react-icons/rx";
 
 const DocPg = () => {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -9,6 +11,7 @@ const DocPg = () => {
   const [end, setEnd] = useState({ xa: 0, ya: 0 });
   const [numPages, setNumPages] = useState(null);
   const [anno, setAnno] = useState([]);
+  const [showMenu, setShowMenu] = useState(false);
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -16,7 +19,6 @@ const DocPg = () => {
   const fetchPdf = () => {
     const pdf = [];
     for (let index = 1; index < numPages; index++) {
-      // const element = array[index];
       pdf.push(
         <Page
           key={index}
@@ -84,9 +86,51 @@ const DocPg = () => {
     // fetchPdf();
     setAnno(JSON.parse(localStorage.getItem("data")));
   }, []);
-
+  console.log(showMenu);
   return (
     <div className="DocPg">
+      <div className="m_ico" onClick={() => setShowMenu(!showMenu)}>
+        {!showMenu ? <CgMenuGridR /> : <RxCross2 />}
+      </div>
+      {showMenu && (
+        <div className="menu">
+          <div className="sidebar">
+            <div className="lebles">
+              <h1>Lebles</h1>
+              <hr />
+              <div className="lebles_div">
+                <div className="title" onClick={() => setAnnoType("title")}>
+                  Title
+                </div>
+                <div className="author" onClick={() => setAnnoType("author")}>
+                  Author
+                </div>
+              </div>
+            </div>
+            <div className="boxes">
+              <h1>Boxes</h1>
+              <hr />
+              {annoType &&
+                anno
+                  .filter((it) => it.pdfId == `${searchParams.get("q")}`)
+                  .map((item, idx) => (
+                    <div key={idx} className="boxes_div">
+                      <div>
+                        x: {item.xa}, y: {item.ya}, height: {item.height},
+                        width:
+                        {item.width}
+                      </div>
+                      {item.annoType == "author" ? (
+                        <div className="author">Author</div>
+                      ) : (
+                        <div className="title">Title</div>
+                      )}
+                    </div>
+                  ))}
+            </div>
+          </div>
+        </div>
+      )}
       <div className="sidebar">
         <div className="lebles">
           <h1>Lebles</h1>
