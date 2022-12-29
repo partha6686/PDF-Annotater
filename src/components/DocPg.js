@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Document, Page } from "react-pdf/dist/esm/entry.webpack5";
+// import { Document, Page } from "react-pdf/dist/esm/entry.webpack5";
+import { Document, Page } from "react-pdf";
 import { useSearchParams } from "react-router-dom";
 import { CgMenuGridR } from "react-icons/cg";
 import { RxCross2 } from "react-icons/rx";
