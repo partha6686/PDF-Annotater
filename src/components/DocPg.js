@@ -187,6 +187,7 @@ const DocPg = () => {
         <Document
           file={`https://arxiv.org/pdf/2212.${searchParams.get("q")}.pdf`}
           onLoadSuccess={onDocumentLoadSuccess}
+          onLoadError={console.error}
         >
           {fetchPdf()}
         </Document>
